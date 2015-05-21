@@ -6,6 +6,7 @@ var io = require('socket.io')(http);
 var bodyParser = require("body-parser")
 var mongoose = require('mongoose')
 var routes = require("./routes.js")
+var $ = require('jquery')
 
 // setting up body parser
 app.use(bodyParser.urlencoded({ extended: false }))
