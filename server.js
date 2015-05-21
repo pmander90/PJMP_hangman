@@ -8,6 +8,7 @@ var mongoose = require('mongoose')
 var routes = require("./routes.js")
 var $ = require('jquery')
 
+
 // setting up body parser
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
