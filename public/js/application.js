@@ -11,10 +11,5 @@
 //= require_tree ./backbone/views
 //= require_tree .
 
-$(document).ready(loadGrumblersApp);
-		function loadGrumblersApp(){
-			mainCollection = new GrumblersCollection();
-			mainCollectionView = new GrumblersListView({collection: mainCollection})
-			mainCollection.fetch();
-			theForm = new FormView({collection: mainCollection});
-		}
+$(document).ready();
+		
