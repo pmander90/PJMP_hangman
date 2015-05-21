@@ -5,7 +5,11 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var bodyParser = require("body-parser")
 var mongoose = require('mongoose')
+<<<<<<< HEAD
 var $ = require('jquery')
+=======
+var routes = require("./routes.js")
+>>>>>>> 6970dc1cc26fdad84e6eb79f4b8d149d0a2a1edf
 
 // setting up body parser
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -27,7 +31,7 @@ var Word = mongoose.model('word', wordSchema)
 app.set("view engine", "hbs")
 app.use(express.static(__dirname + "/public"))
 
-
+app.get("/", routes.index)
 
 
 
