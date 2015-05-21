@@ -5,6 +5,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var bodyParser = require("body-parser")
 var mongoose = require('mongoose')
+var routes = require("./routes.js")
 
 // setting up body parser
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -26,7 +27,7 @@ var Word = mongoose.model('word', wordSchema)
 app.set("view engine", "hbs")
 app.use(express.static(__dirname + "/public"))
 
-
+app.get("/", routes.index)
 
 
 
