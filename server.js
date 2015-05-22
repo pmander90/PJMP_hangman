@@ -31,8 +31,13 @@ Word.create({word: "slice"})
 
 // setting up views and requiring public folder
 app.set("view engine", "hbs")
+app.set('views', __dirname + '/views')
 app.use(express.static(__dirname + "/public"))
 
+
+app.get('/', function(req, res){
+	res.render('index');
+}
 app.get("/", routes.index)
 
 app.get("/words", function(req, res){

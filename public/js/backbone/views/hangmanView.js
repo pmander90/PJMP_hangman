@@ -11,7 +11,7 @@ var HangmanView = Backbone.View.extend({
 		this.render();
 	},
 	render: function(){
-		var renderedHTML = HandlebarsTemplates['hangman/show'](this.model.toJSON());
+		var renderedHTML = HandlebarsTemplates['views/index'](this.model.toJSON());
 		this.$el.html(renderedHTML);
 	}
 })
