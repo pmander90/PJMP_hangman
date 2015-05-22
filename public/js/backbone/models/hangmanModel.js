@@ -1,4 +1,4 @@
 var HangmanModel = Backbone.Model.extend({
-	urlRoot: "/words"
+	urlRoot: "http://localhost:3000/words"
 
 })
