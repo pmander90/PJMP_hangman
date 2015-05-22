@@ -44,7 +44,11 @@ app.get("/words", function(req, res){
 		})
 })
 
-
+io.on('connection', function(socket){
+  socket.on('letter', function(char){
+    io.emit('letter', char);
+  });
+});
 
 app.listen("3000", function(){
 	console.log("listening on 3000")
