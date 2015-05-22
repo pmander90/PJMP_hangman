@@ -8,7 +8,6 @@ var HangmanView = Backbone.View.extend({
 
 	initialize: function(){
 		console.log("New hangman View instantiated");
-		listenTo(this.model, 'change', this.render);
 		this.render();
 	},
 	render: function(){
