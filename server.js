@@ -8,6 +8,7 @@ var mongoose = require('mongoose')
 var $ = require('jquery')
 var routes = require("./routes.js")
 
+
 // setting up body parser
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
@@ -15,14 +16,18 @@ app.use(bodyParser.json());
 // starting db connection, schema, model
 mongoose.connect('mongodb://localhost/pjmp-hangman')
 var db= mongoose.connection
-var userSchema = mongoose.Schema({
-	name: String
-})
-var wordSchema = mongoose.Schema({
+var wordsSchema = mongoose.Schema({
 	word: String
 })
-var User = mongoose.model('user', userSchema)
-var Word = mongoose.model('word', wordSchema)
+var Word = mongoose.model('word', wordsSchema)
+Word.remove({}, function (err){
+	console.log("collection removed")
+})
+Word.create({word: "pizza"})
+Word.create({word: "zoo"})
+Word.create({word: "apple"})
+Word.create({word: "mongoose"})
+Word.create({word: "slice"})
 
 // setting up views and requiring public folder
 app.set("view engine", "hbs")
@@ -30,7 +35,14 @@ app.use(express.static(__dirname + "/public"))
 
 app.get("/", routes.index)
 
-
+app.get("/words", function(req, res){
+	var query = Word.find({})
+		query.select("-_id word")
+		query.exec(function(err, words){
+			res.setHeader("Content-Type", "application/json");
+			res.send(words)
+		})
+})
 
 
 
